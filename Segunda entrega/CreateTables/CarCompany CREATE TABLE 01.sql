@@ -1,0 +1,28 @@
+CREATE DATABASE IF NOT EXISTS CarCompany;
+USE CarCompany;
+
+CREATE TABLE IF NOT EXISTS Supplier (
+	Id INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Adrress VARCHAR(255),
+    PhoneNumber VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS Purchase (
+	Id INT PRIMARY KEY AUTO_INCREMENT,
+    SupplierId INT,
+    Date DATETIME,
+    
+    FOREIGN KEY (SupplierId) REFERENCES Supplier(Id)
+);
+
+CREATE TABLE IF NOT EXISTS Supplie (
+	Id INT PRIMARY KEY AUTO_INCREMENT,
+    PurchaseId INT,
+    SupplieId INT,
+    Cant INT,
+    Price DECIMAL UNSIGNED,
+    
+    FOREIGN KEY (PurchaseId) REFERENCES Purchase(Id),
+    FOREIGN KEY (SupplieId) REFERENCES Supplie(Id)
+);
