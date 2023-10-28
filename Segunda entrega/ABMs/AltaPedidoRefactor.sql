@@ -24,7 +24,6 @@ BEGIN
         SET lastInsertedId = LAST_INSERT_ID();
         newPedido: LOOP
         
-        SELECT 'Se intentará hacer el insert je';
         INSERT INTO `order_detail` (OrderId, ModelId) VALUES (lastInsertedId, pModelId);
         SET countPedido = countPedido + 1;
         IF countPedido < pCant THEN
